@@ -22,6 +22,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long userId;
+
     @Column(nullable = false)
     private String title;
 
@@ -78,10 +80,19 @@ public class Post {
         this.modified = modified;
     }
 
-    public Post(String title, String content)
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Post(String title, String content, Long userId)
     {
         this.title = title;
         this.content = content;
+        this.userId = userId;
     }
 
     public Post(Post post)
@@ -89,6 +100,7 @@ public class Post {
         this.id = post.getId();
         this.content = post.getContent();
         this.title = post.getTitle();
+        this.userId = post.getUserId();
         this.created = post.created;
         this.modified = post.modified;
 
