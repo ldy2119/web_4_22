@@ -17,8 +17,8 @@ public class PostServiceImpl implements PostService {
     @PostConstruct
     private void init()
     {
-        postRepository.save(new Post("11", "22"));
-        postRepository.save(new Post("33", "44"));
+        postRepository.save(new Post("11", "22", 1L));
+        postRepository.save(new Post("33", "44", 1L));
     }
 
     @Override
