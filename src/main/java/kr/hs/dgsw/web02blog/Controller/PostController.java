@@ -19,6 +19,12 @@ public class PostController {
         return new ResponseFormat(ResponseType.POST_ADD, postService.addPost(post));
     }
 
+    @GetMapping("/listPost")
+    public ResponseFormat listPose()
+    {
+        return new ResponseFormat(ResponseType.POST_GET, postService.list());
+    }
+
     @GetMapping("/findPost/{id}")
     public ResponseFormat findUser(@PathVariable Long id)
     {

@@ -19,11 +19,10 @@ public class UserController {
         return new ResponseFormat(ResponseType.USER_ADD, userService.addUser(user));
     }
 
-    @GetMapping
+    @GetMapping("/listUser")
     public ResponseFormat list()
     {
-        ResponseFormat rf = new ResponseFormat(ResponseType.POST_ADD, "Hello");
-        return rf;
+        return new ResponseFormat(ResponseType.USER_GET, userService.listUser());
 
     }
 

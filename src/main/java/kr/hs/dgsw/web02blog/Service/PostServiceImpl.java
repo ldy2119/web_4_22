@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,6 +36,11 @@ public class PostServiceImpl implements PostService {
     public Post get(Long userId)
     {
         return postRepository.findTopByUserIdOrderByIdDesc(userId).orElse(null);
+    }
+
+    @Override
+    public List<Post> list() {
+        return postRepository.findAll();
     }
 
     @Override
