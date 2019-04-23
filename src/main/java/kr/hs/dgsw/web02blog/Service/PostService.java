@@ -6,6 +6,7 @@ public interface PostService {
 
     Post addPost(Post post);
     Post readPost(Long id);
+    Post get(Long userId);
     Post updatePost(Post post);
     boolean deletePost(Long id);
 }

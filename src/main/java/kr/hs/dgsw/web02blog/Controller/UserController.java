@@ -1,5 +1,7 @@
 package kr.hs.dgsw.web02blog.Controller;
 
+import kr.hs.dgsw.web02blog.Protocol.ResponseFormat;
+import kr.hs.dgsw.web02blog.Protocol.ResponseType;
 import kr.hs.dgsw.web02blog.Service.UserService;
 import kr.hs.dgsw.web02blog.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,26 +14,34 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/addUser")
-    public User addUser(@RequestBody User user)
+    public ResponseFormat addUser(@RequestBody User user)
     {
-        return userService.addUser(user);
+        return new ResponseFormat(ResponseType.USER_ADD, userService.addUser(user));
+    }
+
+    @GetMapping
+    public ResponseFormat list()
+    {
+        ResponseFormat rf = new ResponseFormat(ResponseType.POST_ADD, "Hello");
+        return rf;
+
     }
 
     @GetMapping("/findUser/{account}")
-    public User findUser(@PathVariable String account)
+    public ResponseFormat findUser(@PathVariable String account)
     {
-        return userService.readUser(account);
+        return new ResponseFormat(ResponseType.USER_GET, userService.readUser(account));
     }
 
     @PutMapping("/updateUser")
-    public User updateUser(@RequestBody User user)
+    public ResponseFormat updateUser(@RequestBody User user)
     {
-        return userService.updateUser(user);
+        return new ResponseFormat(ResponseType.USER_UPDATE, userService.updateUser(user));
     }
 
     @DeleteMapping("/deleteUser/{id}")
-    public boolean deleteUser(@PathVariable Long id)
+    public ResponseFormat deleteUser(@PathVariable Long id)
     {
-        return userService.deleteUser(id);
+        return new ResponseFormat(ResponseType.USER_DELETE, userService.deleteUser(id));
     }
 }

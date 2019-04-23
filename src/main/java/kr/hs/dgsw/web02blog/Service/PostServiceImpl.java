@@ -32,11 +32,18 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public Post get(Long userId)
+    {
+        return postRepository.findTopByUserIdOrderByIdDesc(userId).orElse(null);
+    }
+
+    @Override
     public Post updatePost(Post post) {
         return postRepository.findById(post.getId()).map(f ->
         {
             f.setContent(post.getContent());
             f.setTitle(post.getTitle());
+            f.setPictures(post.getPictures());
             return postRepository.save(f);
         }).orElse(null);
     }

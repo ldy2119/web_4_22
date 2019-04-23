@@ -1,5 +1,7 @@
 package kr.hs.dgsw.web02blog.Controller;
 
+import kr.hs.dgsw.web02blog.Protocol.ResponseFormat;
+import kr.hs.dgsw.web02blog.Protocol.ResponseType;
 import kr.hs.dgsw.web02blog.Service.PostService;
 import kr.hs.dgsw.web02blog.domain.Post;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,26 +14,26 @@ public class PostController {
     private PostService postService;
 
     @PostMapping("/addPost")
-    public Post addUser(@RequestBody Post post)
+    public ResponseFormat addUser(@RequestBody Post post)
     {
-        return postService.addPost(post);
+        return new ResponseFormat(ResponseType.POST_ADD, postService.addPost(post));
     }
 
     @GetMapping("/findPost/{id}")
-    public Post findUser(@PathVariable Long id)
+    public ResponseFormat findUser(@PathVariable Long id)
     {
-        return postService.readPost(id);
+        return new ResponseFormat(ResponseType.POST_GET, postService.readPost(id));
     }
 
     @PutMapping("/updatePost")
-    public Post updateUser(@RequestBody Post post)
+    public ResponseFormat updateUser(@RequestBody Post post)
     {
-        return postService.updatePost(post);
+        return new ResponseFormat(ResponseType.POST_UPDATE, postService.updatePost(post));
     }
 
     @DeleteMapping("/deletePost/{id}")
-    public boolean deleteUser(@PathVariable Long id)
+    public ResponseFormat deleteUser(@PathVariable Long id)
     {
-        return postService.deletePost(id);
+        return new ResponseFormat(ResponseType.POST_UPDATE, postService.deletePost(id));
     }
 }

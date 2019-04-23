@@ -14,6 +14,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,11 +25,13 @@ public class Post {
 
     private Long userId;
 
-    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT")
     private String content;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<Attachment> pictures;
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
@@ -39,54 +42,6 @@ public class Post {
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss")
     private LocalDateTime modified;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public LocalDateTime getModified() {
-        return modified;
-    }
-
-    public void setModified(LocalDateTime modified) {
-        this.modified = modified;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
     public Post(String title, String content, Long userId)
     {
