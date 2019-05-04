@@ -31,6 +31,12 @@ public class PostController {
         return new ResponseFormat(ResponseType.POST_GET, postService.readPost(id));
     }
 
+    @GetMapping("/findCurrentPost/{id}")
+    public ResponseFormat findCurrentPost(@PathVariable Long id)
+    {
+        return new ResponseFormat(ResponseType.POST_GET, postService.get(id));
+    }
+
     @PutMapping("/updatePost")
     public ResponseFormat updateUser(@RequestBody Post post)
     {

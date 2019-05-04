@@ -43,12 +43,12 @@ public class User {
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime created;
 
     @UpdateTimestamp
     @Column(nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime modified;
 
     public Long getId() {

@@ -43,4 +43,10 @@ public class UserController {
     {
         return new ResponseFormat(ResponseType.USER_DELETE, userService.deleteUser(id));
     }
+
+    @PostMapping("/login")
+    public ResponseFormat login(@RequestBody User user)
+    {
+        return new ResponseFormat(ResponseType.USER_GET, userService.Login(user));
+    }
 }

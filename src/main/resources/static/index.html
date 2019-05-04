@@ -3,8 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script
+            src="node_modules\jquery\dist\jquery.min.js"></script>
+    <link href="style.css" rel="stylesheet"/>
+    <script src="app.js"></script>
 </head>
 <body>
+    <header class="container">
+        <div>
+            DGSW Blog
+        </div>
+    </header>
+    <menu class="container me">
+        <button onclick="openPostDialog()">새 글 쓰기</button>
+        <p>최근 글</p>
+        <div id="newPost">
+            <ul id="PostList">
 
+            </ul>
+        </div>
+    </menu>
+    <section class="container" id="main-container">
+        <div id="content">
+
+        </div>
+    </section>
+    <aside class="container right">
+        <!--<button onclick="login()">로그인하기</button>-->
+
+    </aside>
+    <footer class="container foot">
+        f
+    </footer>
+    <div id="commentContainer" style="display: none">
+        <div id="comment-container">
+            <div class="dialog">
+                <input id = "srcFile" type="file" placeholder="사진 추가"><br>
+                <input id = "postTitle" placeholder="포스트 제목">
+                <input id = "postContent" placeholder="포스트 설명">
+                <div style="margin: 30px 0">
+                    <button onclick="writePost()">확인</button>
+                    <button onclick="closePostDialog()">취소</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

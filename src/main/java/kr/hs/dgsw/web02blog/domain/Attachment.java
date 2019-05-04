@@ -1,9 +1,11 @@
 package kr.hs.dgsw.web02blog.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Entity
+@Data
 public class Attachment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,11 +13,17 @@ public class Attachment {
 
     private String storedPath;
 
-    private Long postId;
+    @ManyToOne
+    private Post post;
 
-    public Attachment(String storedPath, Long postId)
+    public Attachment(String storedPath, Post post)
     {
         this.storedPath = storedPath;
-        this.postId = postId;
+        this.post = post;
+    }
+
+    public Attachment()
+    {
+
     }
 }

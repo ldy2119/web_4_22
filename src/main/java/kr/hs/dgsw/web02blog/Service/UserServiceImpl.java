@@ -69,4 +69,15 @@ public class UserServiceImpl implements UserService {
             return true;
         }).orElse(false);
     }
+
+    @Override
+    public User Login(User user) {
+        return userRepository.findByAccount(user.getAccount()).map(f ->
+        {
+            if(f.getPassword().equals(user.getPassword()))
+                return f;
+            else
+                return null;
+        }).orElse(null);
+    }
 }

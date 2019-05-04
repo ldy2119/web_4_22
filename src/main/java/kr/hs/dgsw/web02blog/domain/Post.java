@@ -35,12 +35,12 @@ public class Post {
 
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime created;
 
     @UpdateTimestamp
     @Column(nullable = false)
-    @JsonFormat(pattern = "yyyy-MM-DD HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime modified;
 
     public Post(String title, String content, Long userId)
@@ -64,5 +64,12 @@ public class Post {
     public Post()
     {
 
+    }
+
+    public void setPictures(List<Attachment> pictures)
+    {
+        this.pictures.clear();
+        if(pictures != null)
+            this.pictures.addAll(pictures);
     }
 }
