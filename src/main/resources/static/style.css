@@ -12,7 +12,9 @@ body {
 
 header {
     height: 100px;
-    background-color: coral;
+    background-color: white;
+    vertical-align: center;
+    clear: both;
 }
 
 menu.me {
@@ -41,12 +43,12 @@ section#main-container {
     bottom: 100px;
     left: 100px;
     right: 100px;
-    background-color: aqua;
+    background-color: lavenderblush;
     overflow-y: auto;
 }
 
 footer.foot {
-    background-color: aqua;
+    background-color: gray;
     /*position : fixed;*/
     top: calc(100vh - 100px);
 }
